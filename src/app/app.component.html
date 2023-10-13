@@ -1,5 +1,25 @@
 <app-header></app-header>
 <main>
-
+  <h2>Roll the Dice</h2>
+  <p *ngIf="isRolled">
+    <img *ngFor="let value of diceValues"
+      src="/assets/images/dice/side_{{value}}.png" alt="side_{{value}}">
+  </p>
+  <p>
+    <span class="total_label">Total:</span>&nbsp;
+    <span class="total_number">{{total}}</span>
+  </p>
+  <p>
+    <label for="c">Number of Dice:</label>&nbsp;
+    <select id="c" (change)="onChange(n.value)" #n>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3" selected>3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  <p>
+    <button (click)="roll()">Roll</button>
+  </p>
 </main>
-<app-footer></app-footer>
+<app-footer name="Applied Computing"></app-footer>
