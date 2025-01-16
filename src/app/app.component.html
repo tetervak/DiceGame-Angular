@@ -1,6 +1,12 @@
 <app-header></app-header>
 <h2> Roll the Dice</h2>
 <p>
-  <img src="images/dice/side_5.png" >
+  <img ngSrc="images/dice/side_{{ diceValue }}.png" alt="side {{diceValue}}" width="100" height="100">
 </p>
-<app-footer></app-footer>
+<p>
+  Total: {{ diceValue }}
+</p>
+<p>
+  <button (click)="onRoll()">Roll</button>
+</p>
+<app-footer name="Applied Computing"></app-footer>

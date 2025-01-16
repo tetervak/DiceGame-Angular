@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {DatePipe} from '@angular/common';
 
 @Component({
@@ -11,5 +11,6 @@ import {DatePipe} from '@angular/common';
 })
 export class FooterComponent {
 
+  @Input() name: string = "Sheridan College";
   today: Date = new Date();
 }
