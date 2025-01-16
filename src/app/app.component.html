@@ -1,11 +1,14 @@
 <app-header></app-header>
 <h2> Roll the Dice</h2>
-<p>
-  <img [ngSrc]="imageSrc(diceValue)" alt="side {{diceValue}}" width="100" height="100">
-</p>
-<p>
-  Total: {{ diceValue }}
-</p>
+
+@if( rollData != undefined){
+  @for (value of rollData.values; track $index){
+    <img [ngSrc]="imageSrc(value)" alt="side {{value}}" width="100" height="100">
+  }
+  <p>
+    Total: {{ rollData.total }}
+  </p>
+}
 <p>
   <button (click)="onRoll()">Roll</button>
 </p>
