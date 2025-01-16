@@ -24,4 +24,8 @@ export class AppComponent {
   onRoll(): void {
     this.diceValue = this.getRandomDiceValue();
   }
+
+  imageSrc(value: number): string {
+    return `images/dice/side_${value}.png`;
+  }
 }
