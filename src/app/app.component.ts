@@ -4,6 +4,8 @@ import {FooterComponent} from './footer/footer.component';
 import {NgOptimizedImage} from '@angular/common';
 import {RollData} from './roll-data';
 import {FormsModule} from '@angular/forms';
+import {DiceDisplayComponent} from './dice-display/dice-display.component';
+import {DiceRollerService} from './dice-roller.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,8 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     NgOptimizedImage,
-    FormsModule
+    FormsModule,
+    DiceDisplayComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -21,31 +24,12 @@ export class AppComponent {
   rollData: RollData | undefined;
   numberOfDice: number = 3;
 
-  private getRandomDiceValue(): number {
-    return 1 + Math.floor( 6 * Math.random())
-  }
-
-  private getRollData(numberOfDice: number): RollData {
-    const values: number[] = [];
-    let total: number = 0;
-    for(let i = 0; i < numberOfDice; i++){
-      let diceValue: number = this.getRandomDiceValue();
-      total += diceValue;
-      values.push(diceValue);
-    }
-
-    return {
-      numberOfDice: numberOfDice,
-      values: values,
-      total: total
-    }
+  //private service: DiceRollerService;
+  constructor(private service: DiceRollerService) {
+    //this.service = service;
   }
 
   onRoll(): void {
-    this.rollData = this.getRollData(this.numberOfDice);
-  }
-
-  imageSrc(value: number): string {
-    return `images/dice/side_${value}.png`;
+    this.rollData = this.service.getRollData(this.numberOfDice);
   }
 }
