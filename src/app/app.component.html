@@ -4,7 +4,8 @@
 @if( rollData != undefined){
   <app-dice-display [diceValues]="rollData.values"></app-dice-display>
   <p>
-    Total: {{ rollData.total }}
+    <span class="label-total">Total:</span>&nbsp;
+    <span class="value-total">{{ rollData.total }}</span>
   </p>
 }
 <p>
